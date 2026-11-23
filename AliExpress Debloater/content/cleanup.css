@@ -1,0 +1,520 @@
+/* AliExpress Debloater — limpeza e visual
+ *
+ * Seções: geral · cabeçalho · home · cards · busca · produto · carrinho · configurações ·
+ *         rodapé · marcações feitas pelo cleanup.js
+ *
+ * Recursos ligáveis no popup: as regras prefixadas com html:not([data-adb-off~="X"]) só
+ * valem com o recurso X ligado (ads, tags, filters, footer). O cleanup.js põe no <html>
+ * a lista dos desligados.
+ *
+ * As classes do site terminam num hash (ex.: "sidebar--container--3g7Ygg7"), por isso o
+ * [class*="..."]. As classes curtas da home (._3mPKP, ._2FypS...) são geradas pelo site e
+ * mudam quando ele é atualizado: se o visual da home sumir, é por aí.
+ */
+
+/* =====================================================================
+   Geral (todas as páginas)
+   ===================================================================== */
+
+.drogue-poplayer-modal,                  /* popup promocional (GIF) */
+[class*="poplayer"],
+[class*="sidebar--container--"],         /* barra lateral flutuante (carrinho, cupons, topo...) */
+[class*="product-fix-wrap"],             /* botões flutuantes de compartilhar */
+[class*="es--sns-shares"],
+[class*="es--ui-fixed-panel"],
+.comet-v2-back-top,                      /* botão "voltar ao topo" */
+[class*="back-top--wrap"],
+#J_xiaomi_dialog,                        /* assistente "Eva" (chat flutuante) */
+#mobile-download {                       /* banner do aplicativo */
+  display: none !important;
+}
+
+/* =====================================================================
+   Cabeçalho
+   ===================================================================== */
+
+[class*="down-load-app--menuItem"],      /* "Faça o download do aplicativo" */
+[class*="search--picSearch"],            /* pesquisa por imagem (câmera) */
+[class*="esm--picture-search-container"],
+a[class*="newSellerTab"],                /* "Vender no AliExpress" */
+[class*="src--section"],                 /* sugestões do painel da busca */
+[class*="Categoey--categoryContent"] {   /* menu grande de "Todas as categorias" */
+  display: none !important;
+}
+
+/* =====================================================================
+   Home
+   ===================================================================== */
+
+[class*="row-container-v3--root"]:has([class*="big-sale--box"]),          /* banner principal + cupons */
+[class*="row-container-v3--root"]:has([class*="grid-1--gridOneContainer"]), /* "Ofertas do dia" / "Combos" */
+[class*="fusion-page-progress--fusionPageProgress"] {                     /* faixa de cupom no topo */
+  display: none !important;
+}
+
+/* Cards da mesma linha com a mesma altura: a altura desce pela cadeia
+   célula _2FypS > _9HTSH > _3gA8_ > card _3mPKP */
+._2FypS,
+._2FypS > ._9HTSH,
+._2FypS ._3gA8_ {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+._2FypS > ._9HTSH,
+._2FypS ._3gA8_,
+._2FypS a._3mPKP {
+  flex: 1 1 auto;
+}
+
+/* =====================================================================
+   Cards (busca usa classes "us--*"; a home, as classes curtas)
+   ===================================================================== */
+
+/* Etiquetas de promoção [tags] */
+html:not([data-adb-off~="tags"]) :is(
+  .FNjFR,                                /* R$ OFF, Cashback, Poupe... (home) */
+  [class*="us--serviceTagWrapper--"],    /* etiquetas de serviço (busca) */
+  .nuPN3,
+  [data-adb-tag]                         /* achadas pelo texto (cleanup.js) */
+) {
+  display: none !important;
+}
+
+/* Botões e separadores que poluem o card */
+[class*="us--actionItems--"],            /* Pré-visualizar / Itens similares (hover) */
+.rcmd-hover-more-action,
+[class*="us--tradeContainer--"] [class*="us--line--"], /* separador "|" nota/vendidos */
+._15juk .SPDY0 {
+  display: none !important;
+}
+
+:is([class*="us--container--"][class*="cards--card--"], a._3mPKP) {
+  display: flex !important;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff !important;
+  border: 1px solid #ececf0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(20, 24, 40, 0.05);
+  text-decoration: none !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+:is([class*="us--container--"][class*="cards--card--"], a._3mPKP):hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(20, 24, 40, 0.13);
+  border-color: #dcdde6;
+}
+
+/* Imagem sempre quadrada (com carrossel o card ficava mais alto e desalinhava a linha) */
+[class*="us--image--"] {
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+  padding: 0 !important;
+}
+
+/* Área de texto */
+:is([class*="us--content--"], ._3jo5e) {
+  box-sizing: border-box;
+  padding: 10px 10px 14px !important;
+}
+
+/* Título em 2 linhas, selos (Choice, Black Friday...) logo abaixo.
+   O ">" importa: "Combos de ofertas" reaproveita _2BLrX em outra linha e herdaria o min-height. */
+:is([class*="us--content--"] > [class*="us--title--"], ._3jo5e > ._2BLrX) {
+  display: flex !important;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: 4px; /* apertado de propósito: 2 selos cabem em card estreito */
+  min-height: 60px;
+  margin: 0 0 6px !important;
+}
+:is([class*="us--titleText--"], ._2BLrX > h3) {
+  order: -1;
+  flex: 1 0 100%;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 36px;
+  margin: 0 !important;
+  overflow: hidden;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 18px !important;
+  white-space: normal !important;
+  color: #1f2330;
+}
+
+:is([class*="us--price--"], ._23lt5) {
+  margin: 0 0 4px !important;
+}
+
+/* Avaliação + vendidos numa linha: ★ 4.9   10.000+ vendidos
+   (em card estreito, os vendidos descem para a linha de baixo) */
+:is([class*="us--tradeContainer--"], ._15juk) {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 2px 8px;
+  height: auto !important;
+  max-height: none !important;
+  margin-top: 6px;
+  overflow: visible !important;
+  font-size: 12px;
+  color: #7a8091;
+}
+:is([class*="us--tradeContainer--"], ._15juk) > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+:is([class*="us--starList--"], ._9_xCK) {
+  display: flex;
+  flex: none !important;
+  align-items: center;
+  width: auto !important;
+}
+:is([class*="us--starList--"], ._9_xCK) img {
+  display: none !important;
+}
+:is([class*="us--starRating--"], ._2L2Tc) {
+  font-size: 12px !important;
+  font-weight: 600;
+  color: #1f2330;
+}
+:is([class*="us--starRating--"], ._2L2Tc)::before {
+  content: "\2605";
+  margin-right: 3px;
+  font-size: 13px;
+  color: #ffa41c;
+}
+:is([class*="us--trade--"], .DUuR2) {
+  font-size: 12px !important;
+  color: #7a8091;
+}
+
+/* =====================================================================
+   Busca / filtro
+   ===================================================================== */
+
+.root-sidecart,                          /* painel lateral do carrinho */
+[class*="relatedSearch--bottomWrapper"], /* "Buscas relacionadas" / palavras-chave */
+[class*="relatedSearch--relatedWrapper"],
+[class*="relatedSearch--ranking-keywords"] {
+  display: none !important;
+}
+
+/* Anúncios [ads] */
+html:not([data-adb-off~="ads"]) :is(
+  #p4p,                                  /* "Produtos premium patrocinados" */
+  [class*="p4p--p4p"],
+  [class*="list--gallery--"]:has([class*="us--ax--"]),  /* card de anúncio (a célula inteira) */
+  .card-out-wrapper:has([class*="us--ax--"])
+) {
+  display: none !important;
+}
+
+/* Menu de filtros (esquerda) [filters] e o recuo que ele deixava na grade */
+html:not([data-adb-off~="filters"]) [class*="refine2023--refine--"] {
+  display: none !important;
+}
+html:not([data-adb-off~="filters"]) [class*="rightContent2023--rightContainer"] {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding-left: 0 !important;
+}
+
+/* Grade ocupa a largura toda (sem o filtro e o carrinho lateral) */
+[class*="root--container"]:has([class*="main2023--container"]) {
+  width: 100% !important;
+  margin-right: 0 !important;
+}
+[class*="main2023--container"] {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Cards em tamanho normal (~210px) e sem buracos: quantas colunas couberem,
+   todos da linha com a mesma altura (a altura desce até o card) */
+[class*="list--galleryWrapper--"] {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)) !important;
+  align-items: stretch !important;
+}
+[class*="list--gallery--"] {
+  display: flex !important;
+  flex: none !important;
+  flex-direction: column;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+[class*="list--gallery--"] > * {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+}
+[class*="list--gallery--"] .card-out-wrapper {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+[class*="list--gallery--"] [class*="us--container--"][class*="cards--card--"] {
+  flex: 1 1 auto;
+}
+
+/* =====================================================================
+   Página de produto
+   ===================================================================== */
+
+.pdp-info-right > div:has(> h1[class*="seo-sellpoints--title"]), /* resumo do item com IA */
+[class*="seo-sellpoints--"],
+[class*="instruction--wrap"],            /* guias e documentos do item */
+a[class*="survey--wrap"],                /* botão flutuante de pesquisa (caneta) */
+[class*="share-and-wish--share"],        /* "Compartilhar" (a lista de desejos fica) */
+[class*="cross-link--"] {                /* "Também buscaram por" / "Este item está na categoria" */
+  display: none !important;
+}
+
+/* Sem barra de rolagem horizontal: a página impunha min-width:1430px e reservava
+   208px à direita para o carrinho lateral (que está oculto) */
+body.pdp-new-pc,
+[class*="pdp-page-wrap"] {
+  min-width: 0 !important;
+}
+[class*="pdp-page-wrap"] {
+  padding-right: 0 !important;
+}
+
+/* Galeria e caixa de preço */
+[class*="image-view-v2--previewBox"] {
+  border-radius: 16px;
+  overflow: hidden;
+}
+[class*="slider--img--"] {
+  border-radius: 8px;
+  overflow: hidden;
+}
+[class*="price-default--bannerWrap"] {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Caixa de compra sem rolagem interna: o site limitava a altura (altura da janela +
+   overflow:auto) e escondia envio, quantidade e botões. Aqui ela cresce até mostrar tudo. */
+[class*="action--wrap"] {
+  max-height: none !important;
+  overflow: visible !important;
+  border: 1px solid #ececf0;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(20, 24, 40, 0.08);
+}
+[class*="action--container"] {
+  max-height: none !important;
+}
+[class*="action--wrap"] [class*="split-line--wrap"] .comet-v2-divider {
+  margin: 6px 0 !important;
+}
+[class*="action--wrap"] [class*="shipping--item"] {
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding-top: 3px !important;
+  padding-bottom: 3px !important;
+}
+[class*="action--wrap"] [class*="shipping--descList"] {
+  margin-top: 2px !important;
+}
+[class*="action--wrap"] [class*="shipping--descItem"] {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 11px !important;
+  line-height: 15px !important;
+}
+[class*="action--wrap"] [class*="quantity--title"] {
+  margin: 0 0 4px !important;
+}
+
+/* Botões Comprar/Adicionar: ficavam presos ao rodapé da janela e cobriam a quantidade;
+   agora seguem o fluxo, logo abaixo dela */
+[class*="action--stickyWrap"] {
+  position: static !important;
+  margin-top: 0 !important;
+  padding-top: 6px !important;
+}
+[class*="action--stickyWrap"] button.comet-v2-btn {
+  height: 46px;
+  border-radius: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+[class*="action--stickyWrap"] button.comet-v2-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+[class*="share-and-wish--wish"] {
+  border-radius: 10px;
+}
+
+/* Janelas baixas: a caixa inteira não caberia fixa no topo, então rola com a página */
+@media (max-height: 760px) {
+  [class*="action--container"] {
+    position: static !important;
+  }
+}
+
+/* =====================================================================
+   Carrinho e "Combos de ofertas"
+   ===================================================================== */
+
+.cart-recommend,                         /* "Mais para amar" */
+[class*="cart-summary-suggestion"],      /* caneta/feedback flutuante */
+#subcart,                                /* carrinho lateral fixo dos Combos */
+.root-subcart {
+  display: none !important;
+}
+
+/* Combos: a coluna de 360px que o site reservava para o carrinho lateral */
+:has(> .mui-zebra-page) {
+  padding-right: 0 !important;
+}
+.mui-zebra-page {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* =====================================================================
+   Configurações e menu "Minha conta"
+   ===================================================================== */
+
+/* Cada seção (Dados pessoais, Segurança, E-mails...) vira um cartão */
+.setting-container {
+  display: flex !important;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 !important;
+}
+.setting-section {
+  height: auto !important;
+  margin: 0 !important;
+  padding: 20px 24px !important;
+  background: #fff;
+  border: 1px solid #ececf0;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(20, 24, 40, 0.05);
+}
+.setting-section-title {
+  position: relative;
+  margin: 0 0 14px !important;
+  padding-left: 14px;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+  color: #1f2330;
+}
+.setting-section-title::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  width: 4px;
+  border-radius: 2px;
+  background: #ff4747;
+}
+
+/* As opções viram botões em pílula, lado a lado */
+.setting-section-content {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px !important;
+}
+.setting-section-content-item {
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.setting-section-content-item-text {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2330 !important;
+  background: #f6f7fa !important;
+  border: 1px solid #e3e5ec !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s, transform 0.15s;
+}
+.setting-section-content-item-text:hover {
+  color: #e0303a !important;
+  background: #fff1f1 !important;
+  border-color: #ff4747 !important;
+  transform: translateY(-1px);
+}
+
+/* Menu lateral */
+.page-menu-item:not(.page-menu-title) {
+  margin: 2px 12px 2px 0;
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+.page-menu-item:not(.page-menu-title):hover {
+  background: #f3f4f8;
+}
+.page-menu-item-active {
+  background: #fff1f1 !important;
+}
+.page-menu-item-active .item-text {
+  font-weight: 600;
+  color: #e0303a !important;
+}
+
+/* =====================================================================
+   Rodapé e texto SEO [footer]
+   Encolhido em vez de display:none, para não sumir com o bloco de que o site depende.
+   ===================================================================== */
+
+html:not([data-adb-off~="footer"]) :is(
+  [class*="row-container-v3--root"]:has([class*="pc2023-discover-more--wrap"]),
+  [class*="pc2023-discover-more--wrap"],
+  .help-center-y2023,
+  .site-footer,
+  .footer-copywrite
+) {
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+}
+
+/* =====================================================================
+   Marcações feitas pelo cleanup.js
+   ===================================================================== */
+
+[data-adb-hidden] {
+  display: none !important;
+}
+
+/* Card de anúncio [ads] em lista flex: invisível, com o tamanho real e margem negativa
+   igual à largura (--adb-w), para não ocupar espaço e a rolagem infinita da home
+   continuar (ver hideAd no cleanup.js). Em grade, sai do layout. */
+html:not([data-adb-off~="ads"]) [data-adb-ad="flex"] {
+  margin-left: 0 !important;
+  margin-right: calc(-1 * var(--adb-w, 0px)) !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+html:not([data-adb-off~="ads"]) [data-adb-ad="grid"] {
+  display: none !important;
+}

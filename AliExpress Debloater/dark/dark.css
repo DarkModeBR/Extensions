@@ -1,0 +1,164 @@
+/* AliExpress Debloater — modo escuro: base fixa (camada 1)
+ *
+ * Só vale com <html data-adb-dark> (posto pelo dark.js). As demais cores são calculadas
+ * pelo dark.js a partir do que cada elemento tem; aqui ficam a base, as marcações que ele
+ * usa e ajustes de partes conhecidas do site.
+ *
+ * Seções: base · marcações do dark.js · campos nativos · cards · cabeçalho · produto ·
+ *         carrinho · configurações
+ */
+
+/* =====================================================================
+   Base
+   ===================================================================== */
+
+html[data-adb-dark] {
+  color-scheme: dark;            /* barras de rolagem e campos nativos escuros */
+  background: #12141a;
+}
+html[data-adb-dark] body {
+  background-color: #12141a;
+  color: #e6e8ee;
+}
+html[data-adb-dark] ::selection {
+  background: #3b4a7a;
+  color: #fff;
+}
+
+/* =====================================================================
+   Marcações do dark.js
+   ===================================================================== */
+
+/* Ícones PNG pretos (câmera de busca, frete, entrega...): inverte */
+html[data-adb-dark] [data-adb-inv] {
+  filter: invert(1);
+}
+/* Faixas com imagem de fundo branca: mescladas com o fundo escuro (data-adb-b dá a cor).
+   Multiply: o branco da imagem vira a cor escura; os detalhes coloridos só escurecem. */
+html[data-adb-dark] [data-adb-mix] {
+  background-blend-mode: multiply !important;
+}
+
+/* =====================================================================
+   Campos nativos (o navegador desenha; nenhuma regra do site alcança)
+   ===================================================================== */
+
+/* Com color-scheme:dark o navegador pinta os campos de cinza (#3b3b3b):
+   transparente para herdar o fundo do contêiner */
+html[data-adb-dark] :is(input:not([type]), input[type="text"], input[type="search"],
+    input[type="email"], input[type="password"], input[type="number"], input[type="tel"],
+    textarea) {
+  background-color: transparent;
+}
+/* Listas de opções e janelas nativas */
+html[data-adb-dark] :is(select, option, optgroup) {
+  background-color: #1c1f27;
+  color: #e6e8ee;
+}
+html[data-adb-dark] dialog {
+  background-color: #1c1f27;
+  color: #e6e8ee;
+}
+html[data-adb-dark] hr {
+  border-color: #2c303c;
+}
+
+/* =====================================================================
+   Cards (busca + home): um tom acima do fundo da página
+   ===================================================================== */
+
+html[data-adb-dark] :is([class*="us--container--"][class*="cards--card--"], a._3mPKP) {
+  background: #1c1f27 !important;
+  border-color: #2c303c !important;
+  box-shadow: none;
+}
+html[data-adb-dark] :is([class*="us--container--"][class*="cards--card--"], a._3mPKP):hover {
+  border-color: #454a5c !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+}
+html[data-adb-dark] :is([class*="us--titleText--"], ._2BLrX > h3),
+html[data-adb-dark] :is([class*="us--starRating--"], ._2L2Tc) {
+  color: #e6e8ee;
+}
+html[data-adb-dark] :is([class*="us--tradeContainer--"], ._15juk),
+html[data-adb-dark] :is([class*="us--trade--"], .DUuR2) {
+  color: #9aa1b2;
+}
+
+/* =====================================================================
+   Cabeçalho
+   ===================================================================== */
+
+/* Logo (imagem com texto preto): clareia o texto e mantém o laranja */
+html[data-adb-dark] [class*="pc-header--logoImg"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* =====================================================================
+   Página de produto
+   ===================================================================== */
+
+/* Faixa "Marcas+ Compromisso de...": máscara em imagem clara */
+html[data-adb-dark] [class*="choice-mind--mask"] {
+  background-image: none !important;
+  background-color: rgba(3, 124, 255, 0.1) !important;
+}
+/* Caixa de compra um tom acima do fundo */
+html[data-adb-dark] [class*="action--wrap"] {
+  background-color: #1a1d25 !important;
+  border-color: #2c303c !important;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+/* Faixa dos botões Comprar/Adicionar: herda o fundo da caixa (antes ficava mais escura) */
+html[data-adb-dark] [class*="action--stickyWrap"] {
+  background-color: transparent !important;
+}
+
+/* =====================================================================
+   Carrinho
+   Os cabeçalhos de grupo ("Choice | Enviado pelo AliExpress", e a cópia fixa no topo ao
+   rolar) usam imagem de fundo branca. O dark.js já detecta faixas assim (data-adb-mix);
+   esta regra garante o resultado desde o primeiro quadro e clareia o título.
+   ===================================================================== */
+
+html[data-adb-dark] :is([class*="group-title-ctn"], [class*="group-header-container"]) {
+  background-color: #12141a !important;
+  background-blend-mode: multiply !important;
+}
+html[data-adb-dark] body [class*="group-title-ctn"],
+html[data-adb-dark] body [class*="group-title-ctn"] :is(strong, b) {
+  color: #e6e8ee !important;
+}
+
+/* =====================================================================
+   Configurações e menu "Minha conta"
+   (o "body" sobe a especificidade para vencer as marcações do dark.js)
+   ===================================================================== */
+
+html[data-adb-dark] body .setting-section {
+  background: #1c1f27 !important;
+  border-color: #2c303c !important;
+  box-shadow: none;
+}
+html[data-adb-dark] body .setting-section-title {
+  color: #e6e8ee !important;
+}
+html[data-adb-dark] body .setting-section-content-item-text {
+  color: #e6e8ee !important;
+  background: #252833 !important;
+  border-color: #343846 !important;
+}
+html[data-adb-dark] body .setting-section-content-item-text:hover {
+  color: #ff9a9a !important;
+  background: rgba(255, 71, 71, 0.14) !important;
+  border-color: #ff5a5a !important;
+}
+html[data-adb-dark] body .page-menu-item:not(.page-menu-title):hover {
+  background: #23262f !important;
+}
+html[data-adb-dark] body .page-menu-item-active {
+  background: rgba(255, 71, 71, 0.14) !important;
+}
+html[data-adb-dark] body .page-menu-item-active .item-text {
+  color: #ff9a9a !important;
+}

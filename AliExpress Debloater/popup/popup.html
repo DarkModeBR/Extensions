@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>AliExpress Debloater</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="../icons/icon-48.png" alt="">
+    <div>
+      <h1>AliExpress Debloater</h1>
+      <p>AliExpress limpo e mais bonito</p>
+    </div>
+    <span class="version" id="version"></span>
+  </header>
+
+  <section class="stats empty" id="stats" aria-live="polite">
+    <div class="stat"><b id="stat-ads">–</b><span>anúncios</span></div>
+    <div class="stat"><b id="stat-tags">–</b><span>etiquetas</span></div>
+    <div class="stat"><b id="stat-prices">–</b><span>preços</span></div>
+    <p class="stats-note" id="stats-note">Abra uma página do AliExpress para ver o que foi limpo.</p>
+  </section>
+
+  <h2>Aparência</h2>
+  <div class="card">
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </span>
+      <span class="label">
+        <strong>Modo escuro</strong>
+        <small>Tema escuro sem inverter as fotos</small>
+      </span>
+      <span class="switch"><input type="checkbox" id="dark"><span class="track"></span></span>
+    </label>
+  </div>
+
+  <h2>Limpeza</h2>
+  <div class="card">
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>
+      </span>
+      <span class="label">
+        <strong>Anúncios</strong>
+        <small>Esconde os produtos patrocinados</small>
+      </span>
+      <span class="switch"><input type="checkbox" data-feature="ads"><span class="track"></span></span>
+    </label>
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>
+      </span>
+      <span class="label">
+        <strong>Etiquetas de promoção</strong>
+        <small>Cashback, cupons, “Poupe R$…”</small>
+      </span>
+      <span class="switch"><input type="checkbox" data-feature="tags"><span class="track"></span></span>
+    </label>
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></svg>
+      </span>
+      <span class="label">
+        <strong>Esconder filtros da busca</strong>
+        <small>Mais espaço para os produtos</small>
+      </span>
+      <span class="switch"><input type="checkbox" data-feature="filters"><span class="track"></span></span>
+    </label>
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <span class="label">
+        <strong>Preços com centavos</strong>
+        <small>R$14,9 → R$14,90</small>
+      </span>
+      <span class="switch"><input type="checkbox" data-feature="prices"><span class="track"></span></span>
+    </label>
+    <label class="row">
+      <span class="ico">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15h18"/></svg>
+      </span>
+      <span class="label">
+        <strong>Rodapé</strong>
+        <small>Links e textos do fim da página</small>
+      </span>
+      <span class="switch"><input type="checkbox" data-feature="footer"><span class="track"></span></span>
+    </label>
+  </div>
+
+  <footer>As mudanças valem na hora, sem recarregar a página.</footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
