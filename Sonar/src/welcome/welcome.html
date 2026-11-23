@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bem-vindo ao Sonar</title>
+    <link rel="stylesheet" href="../ui/base.css" />
+    <link rel="stylesheet" href="welcome.css" />
+    <script src="../shared/defaults.js"></script>
+    <script src="../ui/components.js"></script>
+    <script src="welcome.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="bar">
+        <div class="brand">
+          <img src="../../assets/icons/icon-48.png" alt="" width="32" height="32" />
+          <strong>Sonar</strong>
+        </div>
+        <ol class="progress-steps" aria-label="Etapas">
+          <li data-for="choose">Escolher o modelo</li>
+          <li data-for="download">Baixar</li>
+          <li data-for="done">Pronto</li>
+        </ol>
+      </header>
+
+      <main class="stage">
+        <div class="hero-eq" id="eq"></div>
+
+        <!-- 1. Escolher -->
+        <section class="step" data-step="choose">
+          <div class="intro">
+            <h1>Escolha o modelo de voz</h1>
+            <p class="muted">
+              O Sonar ouve o áudio do reCAPTCHA e responde por você. Tudo roda no seu computador: grátis, sem chave e
+              sem enviar o áudio para ninguém. O modelo é baixado uma vez e fica guardado no navegador.
+            </p>
+          </div>
+          <div class="models" id="models" role="radiogroup" aria-label="Modelo de voz"></div>
+          <div class="actions">
+            <button class="btn btn-primary btn-lg" id="start" type="button"></button>
+            <span class="faint">Dá para trocar depois nas configurações.</span>
+          </div>
+        </section>
+
+        <!-- 2. Baixar -->
+        <section class="step" data-step="download" hidden>
+          <div class="intro">
+            <h1 id="dl-title">Baixando o modelo</h1>
+            <p class="muted" id="dl-text">Isso acontece só uma vez. Pode deixar esta aba aberta enquanto termina.</p>
+          </div>
+          <div class="meter-panel">
+            <div class="meter-figure"><span id="dl-pct">0</span><small>%</small></div>
+            <div class="progress big"><span id="dl-bar"></span></div>
+            <p class="muted" id="dl-bytes">Conectando…</p>
+          </div>
+          <div class="actions" id="dl-error" hidden>
+            <button class="btn btn-primary" id="retry" type="button">Tentar de novo</button>
+            <button class="btn btn-ghost" id="back" type="button">Escolher outro modelo</button>
+          </div>
+        </section>
+
+        <!-- 3. Pronto -->
+        <section class="step" data-step="done" hidden>
+          <div class="intro">
+            <span class="done-mark" aria-hidden="true"></span>
+            <h1>Tudo pronto</h1>
+            <p class="muted" id="done-text"></p>
+          </div>
+
+          <div class="done-grid">
+            <div class="group">
+              <h3 class="group-title">Como resolver um desafio</h3>
+              <div class="how">
+                <span class="how-icon" data-icon="wave"></span>
+                <div>
+                  <strong>Clique no ícone de ondas</strong>
+                  <span class="muted">Ele aparece no desafio, ao lado do botão “i”.</span>
+                </div>
+              </div>
+              <div class="how">
+                <span class="how-icon keys-icon" data-shortcut></span>
+                <div>
+                  <strong>Ou use o atalho</strong>
+                  <span class="muted">Funciona mesmo antes de marcar a caixa.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3 class="group-title">Quer que seja automático?</h3>
+              <div class="row">
+                <div class="row-text">
+                  <strong>Resolver sozinho</strong>
+                  <span class="muted">Começa assim que o desafio aparece.</span>
+                </div>
+                <button data-switch="autoSolve" aria-label="Resolver sozinho"></button>
+              </div>
+              <div class="row">
+                <div class="row-text">
+                  <strong>Marcar “Não sou um robô”</strong>
+                  <span class="muted">Clica na caixa quando ela aparece.</span>
+                </div>
+                <button data-switch="autoClickCheckbox" aria-label="Marcar a caixa sozinho"></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary btn-lg" id="finish" type="button">Concluir</button>
+            <button class="btn btn-ghost btn-lg" id="open-options" type="button">Abrir configurações</button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

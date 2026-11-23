@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sonar</title>
+    <link rel="stylesheet" href="../ui/base.css" />
+    <link rel="stylesheet" href="popup.css" />
+    <script src="../shared/defaults.js"></script>
+    <script src="../ui/components.js"></script>
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <header class="head">
+      <img src="../../assets/icons/icon-48.png" alt="" width="30" height="30" />
+      <strong>Sonar</strong>
+      <span class="pill" id="pill">…</span>
+    </header>
+
+    <section class="hero">
+      <div class="eq-box" id="eq"></div>
+      <div class="figures">
+        <div><span id="solved">0</span><small>resolvidos</small></div>
+        <div><span id="rate">—</span><small>de acerto</small></div>
+        <div><span id="avg">—</span><small>tempo médio</small></div>
+      </div>
+    </section>
+
+    <button class="btn btn-primary solve" id="solve" type="button">
+      <span>Resolver nesta aba</span>
+      <span class="keys" id="keys"></span>
+    </button>
+
+    <div class="list">
+      <div class="item">
+        <div>
+          <strong>Resolver sozinho</strong>
+          <span class="muted">Quando o desafio aparecer</span>
+        </div>
+        <button data-switch="autoSolve" aria-label="Resolver sozinho"></button>
+      </div>
+      <div class="item">
+        <div>
+          <strong>Marcar a caixa</strong>
+          <span class="muted">“Não sou um robô”</span>
+        </div>
+        <button data-switch="autoClickCheckbox" aria-label="Marcar a caixa sozinho"></button>
+      </div>
+    </div>
+
+    <footer class="foot">
+      <button class="btn btn-ghost btn-sm" id="open-options" type="button">Abrir configurações</button>
+    </footer>
+  </body>
+</html>

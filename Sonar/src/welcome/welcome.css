@@ -1,0 +1,335 @@
+/* Tela de boas-vindas (componentes em ../ui/base.css). */
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(90% 60% at 50% -10%, var(--signal-wash), transparent 60%), var(--bg);
+}
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+}
+
+/* ---------- Barra superior ---------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px clamp(20px, 4vw, 56px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand img {
+  border-radius: 9px;
+}
+
+.brand strong {
+  font: 700 20px/1 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Etapas: uma sequência real, por isso numeradas */
+.progress-steps {
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.progress-steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding: 0 14px 0 6px;
+  border-radius: var(--r-pill);
+  color: var(--text-3);
+  font-size: 13px;
+  font-weight: 600;
+  counter-increment: step;
+  transition:
+    color 0.2s,
+    background-color 0.2s;
+}
+
+.progress-steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  font-size: 12px;
+}
+
+.progress-steps li.active {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.progress-steps li.active::before {
+  border-color: var(--signal);
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+.progress-steps li.done {
+  color: var(--text-2);
+}
+
+.progress-steps li.done::before {
+  content: '✓';
+  border-color: var(--ok);
+  background: var(--ok);
+  color: var(--bg);
+}
+
+/* ---------- Palco ---------- */
+
+.stage {
+  position: relative;
+  display: grid;
+  align-content: start;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  padding: clamp(16px, 4vh, 48px) clamp(20px, 4vw, 56px) 56px;
+}
+
+.hero-eq {
+  height: 64px;
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+
+.hero-eq.idle {
+  opacity: 0.5;
+}
+
+.hero-eq.fast span {
+  animation-duration: 0.7s;
+}
+
+.step {
+  display: grid;
+  gap: 28px;
+  animation: step-in 0.3s var(--ease);
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.intro {
+  display: grid;
+  gap: 10px;
+  max-width: 68ch;
+}
+
+.intro h1 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.intro p {
+  font-size: 15.5px;
+}
+
+.models {
+  grid-auto-columns: minmax(260px, 1fr);
+}
+
+.model-head .tag-recommended {
+  padding: 3px 10px;
+  border: 1px solid var(--signal);
+  border-radius: var(--r-pill);
+  color: var(--signal-strong);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn-lg {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+/* ---------- Download ---------- */
+
+.meter-panel {
+  display: grid;
+  gap: 14px;
+  max-width: 640px;
+  padding: 26px 28px;
+  border: 1px solid var(--line-soft);
+  border-radius: 22px;
+  background: var(--surface);
+}
+
+.meter-figure {
+  font: 700 64px/1 var(--font-display);
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.meter-figure small {
+  margin-left: 2px;
+  color: var(--text-3);
+  font-size: 28px;
+}
+
+.progress.big {
+  height: 10px;
+}
+
+.meter-panel.error .progress > span {
+  background: var(--bad);
+}
+
+/* ---------- Pronto ---------- */
+
+.done-mark {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+.done-mark::after {
+  content: '';
+  width: 24px;
+  height: 12px;
+  margin-top: -6px;
+  border-left: 3.5px solid var(--bg);
+  border-bottom: 3.5px solid var(--bg);
+  transform: rotate(-45deg);
+}
+
+.done-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.how {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+}
+
+.how + .how {
+  border-top: 1px solid var(--line-soft);
+}
+
+.how div {
+  display: grid;
+  gap: 2px;
+}
+
+.how .muted {
+  font-size: 13px;
+}
+
+.how-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  min-width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--signal-wash);
+  color: var(--signal-strong);
+}
+
+.how-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.keys-icon {
+  display: inline-flex;
+  gap: 3px;
+  padding: 0 8px;
+  background: transparent;
+}
+
+.group .row + .row {
+  border-top: 1px solid var(--line-soft);
+}
+
+.group .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 14px 0;
+}
+
+.row-text {
+  display: grid;
+  gap: 2px;
+}
+
+.row-text strong {
+  font-weight: 600;
+}
+
+.row-text .muted {
+  font-size: 13px;
+}
+
+.group {
+  padding: 6px 22px 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-panel);
+  background: var(--surface);
+}
+
+.group-title {
+  padding: 16px 0 6px;
+  color: var(--text-2);
+  font: 600 13px var(--font-body);
+}
+
+@media (max-width: 760px) {
+  .bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .progress-steps {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
+  .progress-steps li {
+    white-space: nowrap;
+  }
+}

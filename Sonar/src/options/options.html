@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sonar — Configurações</title>
+    <link rel="stylesheet" href="../ui/base.css" />
+    <link rel="stylesheet" href="options.css" />
+    <script src="../shared/defaults.js"></script>
+    <script src="../ui/components.js"></script>
+    <script src="options.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="rail">
+        <div class="brand">
+          <img src="../../assets/icons/icon-48.png" alt="" width="34" height="34" />
+          <div>
+            <strong>Sonar</strong>
+            <span class="faint" id="version"></span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Seções">
+          <a href="#overview" data-view="overview" data-icon="wave">Visão geral</a>
+          <a href="#voice" data-view="voice" data-icon="cpu">Reconhecimento de voz</a>
+          <a href="#behavior" data-view="behavior" data-icon="sliders">Comportamento</a>
+        </nav>
+
+        <div class="rail-foot">
+          <span class="faint">Tema</span>
+          <div id="theme"></div>
+        </div>
+      </aside>
+
+      <main class="main" id="main">
+        <header class="topbar">
+          <h1 id="view-title">Visão geral</h1>
+          <span class="pill" id="engine-pill">Verificando o motor…</span>
+        </header>
+
+        <!-- Visão geral -->
+        <section class="view" id="view-overview" data-title="Visão geral">
+          <div class="signal">
+            <div class="signal-head">
+              <div>
+                <h2 id="hero-title">Pronto para resolver</h2>
+                <p class="muted" id="hero-text">Clique no ícone de ondas dentro do desafio ou use o atalho.</p>
+              </div>
+              <span class="keys" data-shortcut></span>
+            </div>
+            <div class="signal-eq" id="overview-eq"></div>
+            <dl class="figures">
+              <div>
+                <dt>Resolvidos</dt>
+                <dd id="fig-solved">0</dd>
+              </div>
+              <div>
+                <dt>Falhas</dt>
+                <dd id="fig-failed">0</dd>
+              </div>
+              <div>
+                <dt>Taxa de acerto</dt>
+                <dd id="fig-rate">—</dd>
+              </div>
+              <div>
+                <dt>Tempo médio</dt>
+                <dd id="fig-avg">—</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="split">
+            <div class="group">
+              <h3 class="group-title">Ao abrir um desafio</h3>
+              <div class="row">
+                <div class="row-text">
+                  <strong>Resolver sozinho</strong>
+                  <span class="muted">Começa assim que o desafio aparece na tela.</span>
+                </div>
+                <button data-switch="autoSolve" aria-label="Resolver sozinho"></button>
+              </div>
+              <div class="row">
+                <div class="row-text">
+                  <strong>Marcar “Não sou um robô”</strong>
+                  <span class="muted">Clica na caixa quando ela aparece.</span>
+                </div>
+                <button data-switch="autoClickCheckbox" aria-label="Marcar a caixa sozinho"></button>
+              </div>
+            </div>
+
+            <div class="group">
+              <h3 class="group-title">Motor de voz</h3>
+              <div class="engine-summary">
+                <span class="engine-glyph" data-icon="cpu"></span>
+                <div>
+                  <strong id="summary-name"></strong>
+                  <span class="muted" id="summary-detail"></span>
+                </div>
+              </div>
+              <div class="row row-actions">
+                <a class="btn btn-ghost" href="#voice">Ajustar o motor</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Reconhecimento de voz -->
+        <section class="view" id="view-voice" data-title="Reconhecimento de voz" hidden>
+          <div class="section-head">
+            <h2>Modelo</h2>
+            <p class="muted">
+              Tudo roda no seu computador: grátis, sem chave e sem enviar o áudio para ninguém. Cada modelo é baixado
+              uma vez e fica guardado no navegador.
+            </p>
+          </div>
+          <div class="models" id="models"></div>
+
+          <div class="group">
+            <h3 class="group-title">Desempenho</h3>
+            <div class="row">
+              <div class="row-text">
+                <strong>Processar com</strong>
+                <span class="muted">A GPU pode ser mais rápida em placas recentes, mas ainda é experimental.</span>
+              </div>
+              <div id="device-select"></div>
+            </div>
+            <div class="row">
+              <div class="row-text">
+                <strong>Usar vários núcleos da CPU</strong>
+                <span class="muted" id="threads-detail"
+                  >Transcreve mais rápido. Desliga sozinho se o navegador não suportar.</span
+                >
+              </div>
+              <button data-switch="multiThread" aria-label="Usar vários núcleos"></button>
+            </div>
+            <div class="row">
+              <div class="row-text">
+                <strong>Liberar memória</strong>
+                <span class="muted"
+                  >Fecha o motor agora. Ele também fecha sozinho após 10 minutos sem uso e reabre quando precisa.</span
+                >
+              </div>
+              <button class="btn btn-ghost" id="restart-engine" type="button"></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Comportamento -->
+        <section class="view" id="view-behavior" data-title="Comportamento" hidden>
+          <div class="group">
+            <h3 class="group-title">Automação</h3>
+            <div class="row">
+              <div class="row-text">
+                <strong>Resolver sozinho</strong>
+                <span class="muted">Começa assim que o desafio aparece na tela.</span>
+              </div>
+              <button data-switch="autoSolve" aria-label="Resolver sozinho"></button>
+            </div>
+            <div class="row">
+              <div class="row-text">
+                <strong>Marcar “Não sou um robô”</strong>
+                <span class="muted">Clica na caixa quando ela aparece na tela.</span>
+              </div>
+              <button data-switch="autoClickCheckbox" aria-label="Marcar a caixa sozinho"></button>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3 class="group-title">Resposta</h3>
+            <div class="row">
+              <div class="row-text">
+                <strong>Digitar letra por letra</strong>
+                <span class="muted"
+                  >Imita uma pessoa, mas leva um pouco mais. Desligado, a resposta entra de uma vez.</span
+                >
+              </div>
+              <button data-switch="humanTyping" aria-label="Digitar letra por letra"></button>
+            </div>
+            <div class="row">
+              <div class="row-text">
+                <strong>Tentativas por desafio</strong>
+                <span class="muted">Inclui pedidos de “resolva mais” e áudios que não deu para entender.</span>
+              </div>
+              <div id="attempts"></div>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3 class="group-title">Atalho</h3>
+            <div class="row">
+              <div class="row-text">
+                <strong>Resolver o desafio da aba</strong>
+                <span class="muted">Se a caixa ainda não foi marcada, ele marca e resolve em seguida.</span>
+              </div>
+              <div class="row-control">
+                <span class="keys" data-shortcut></span>
+                <button class="btn btn-sm btn-ghost" id="change-shortcut" type="button">Alterar</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="group">
+            <h3 class="group-title">Estatísticas</h3>
+            <div class="row">
+              <div class="row-text">
+                <strong>Zerar contadores</strong>
+                <span class="muted">Volta resolvidos, falhas e tempo médio para zero.</span>
+              </div>
+              <button class="btn btn-danger btn-sm" id="reset-stats" type="button"></button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
