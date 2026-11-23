@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkLimpo</title>
+    <link rel="icon" href="../../icons/on-32.png" />
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="side">
+        <a class="brand" href="#protection">
+          <img src="../../icons/on-48.png" alt="" width="34" height="34" id="brandLogo" />
+          <span class="brand-text">
+            <strong>LinkLimpo</strong>
+            <span id="version"></span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="LinkLimpo">
+          <a href="#protection" data-icon="shield"><span data-i18n="navProtection"></span></a>
+          <a href="#rules" data-icon="rules"><span data-i18n="navRules"></span></a>
+          <a href="#paused" data-icon="pause"><span data-i18n="navPaused"></span><em class="count" id="pausedBadge" hidden></em></a>
+          <a href="#activity" data-icon="activity"><span data-i18n="navActivity"></span></a>
+        </nav>
+
+        <div class="side-foot">
+          <p class="state" id="sideState"><i></i><span></span></p>
+          <p class="muted" id="sideRules"></p>
+          <p class="faint" data-i18n="sideCredit"></p>
+        </div>
+      </aside>
+
+      <main class="content" id="content">
+        <!-- ============================================== Proteção -->
+        <section class="page" id="page-protection">
+          <header class="page-head">
+            <div>
+              <h1 data-i18n="navProtection"></h1>
+              <p class="lead" data-i18n="protectionLead"></p>
+            </div>
+            <label class="master">
+              <span id="masterLabel"></span>
+              <input type="checkbox" class="toggle" data-key="enabled" />
+            </label>
+          </header>
+
+          <section class="hero" id="hero">
+            <div class="hero-text">
+              <h2 id="heroTitle"></h2>
+              <p id="heroText"></p>
+            </div>
+            <div class="hero-demo" aria-hidden="true">
+              <div class="hero-before" id="heroBefore"></div>
+              <div class="hero-after url" id="heroAfter"></div>
+            </div>
+          </section>
+
+          <div class="cards protection-cards">
+            <section class="card span-rows">
+              <h3 data-i18n="groupProtection"></h3>
+              <div class="opts" id="toggles-protection"></div>
+            </section>
+            <section class="card">
+              <h3 data-i18n="groupInterface"></h3>
+              <div class="opts" id="toggles-interface"></div>
+            </section>
+            <section class="card">
+              <h3 data-i18n="groupAdvanced"></h3>
+              <div class="opts" id="toggles-advanced"></div>
+            </section>
+          </div>
+        </section>
+
+        <!-- ================================================ Regras -->
+        <section class="page" id="page-rules" hidden>
+          <header class="page-head">
+            <div>
+              <h1 data-i18n="navRules"></h1>
+              <p class="lead" data-i18n="rulesLead"></p>
+            </div>
+            <div class="head-actions">
+              <button class="btn" id="rulesReset"><span data-i18n="rulesUseBundled"></span></button>
+              <button class="btn primary" id="rulesUpdate"><span data-i18n="rulesUpdateNow"></span></button>
+            </div>
+          </header>
+          <p class="flash" id="rulesMsg" aria-live="polite"></p>
+
+          <div class="strip" id="rulesStatus"></div>
+
+          <div class="split">
+            <section class="card">
+              <h3 data-i18n="rulesUpdateCard"></h3>
+              <div class="opts" id="toggles-rules"></div>
+              <div class="opt static">
+                <span class="text"><span class="name" data-i18n="rulesInterval"></span></span>
+                <span id="intervalSlot"></span>
+              </div>
+              <details class="disclosure sources">
+                <summary data-i18n="rulesSources"></summary>
+                <label class="field">
+                  <span data-i18n="rulesUrl"></span>
+                  <input type="url" class="input mono" id="rulesUrl" spellcheck="false" />
+                </label>
+                <label class="field">
+                  <span data-i18n="rulesHashUrl"></span>
+                  <input type="url" class="input mono" id="rulesHashUrl" spellcheck="false" />
+                </label>
+                <button class="btn" id="sourcesSave"><span data-i18n="save"></span></button>
+              </details>
+            </section>
+
+            <section class="card editor">
+              <div class="card-head">
+                <h3 data-i18n="rulesCustom"></h3>
+                <div class="head-actions">
+                  <button class="btn ghost" id="customExample"><span data-i18n="rulesCustomExample"></span></button>
+                  <button class="btn primary" id="customSave"><span data-i18n="save"></span></button>
+                </div>
+              </div>
+              <p class="muted small" data-i18n="rulesCustomHelp"></p>
+              <textarea id="customRules" class="textarea" rows="16" spellcheck="false" wrap="off" placeholder='{
+  "extend": {
+    "globalRules": { "rules": ["meu_parametro"] }
+  }
+}'></textarea>
+              <p class="small" id="customMsg" aria-live="polite"></p>
+            </section>
+          </div>
+        </section>
+
+        <!-- ======================================== Sites pausados -->
+        <section class="page" id="page-paused" hidden>
+          <header class="page-head">
+            <div>
+              <h1 data-i18n="navPaused"></h1>
+              <p class="lead" data-i18n="pausedLead"></p>
+            </div>
+          </header>
+          <form class="add-site" id="pausedForm">
+            <input type="text" class="input" id="pausedInput" spellcheck="false" autocomplete="off" data-i18n-placeholder="pausedPlaceholder" />
+            <button class="btn primary" type="submit" id="pausedAddBtn"><span data-i18n="pausedAdd"></span></button>
+          </form>
+          <p class="small" id="pausedMsg" aria-live="polite"></p>
+          <ul class="sites" id="pausedList"></ul>
+          <div class="empty" id="pausedEmpty" hidden>
+            <p data-i18n="pausedEmpty"></p>
+          </div>
+        </section>
+
+        <!-- ============================================= Atividade -->
+        <section class="page" id="page-activity" hidden>
+          <header class="page-head">
+            <div>
+              <h1 data-i18n="navActivity"></h1>
+              <p class="lead" id="since"></p>
+            </div>
+            <div class="head-actions">
+              <button class="btn" id="logClear"><span data-i18n="activityClearLog"></span></button>
+              <button class="btn" id="statsReset"><span data-i18n="activityResetStats"></span></button>
+            </div>
+          </header>
+
+          <dl class="strip totals" id="totals"></dl>
+
+          <section class="card">
+            <div class="opts" id="toggles-activity"></div>
+          </section>
+
+          <section class="card table-card">
+            <div class="table-wrap" id="logWrap">
+              <table class="log">
+                <thead>
+                  <tr>
+                    <th data-i18n="logWhen"></th>
+                    <th data-i18n="logKind"></th>
+                    <th data-i18n="logRule"></th>
+                    <th data-i18n="logUrl"></th>
+                  </tr>
+                </thead>
+                <tbody id="log"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="logEmpty" hidden><p></p></div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+{
+  "extName": {
+    "message": "LinkLimpo — tracking-free links"
+  },
+  "extDescription": {
+    "message": "Removes tracking parameters from links, skips redirectors and blocks tracking domains. Uses the ClearURLs rules."
+  },
+  "cmdCopy": {
+    "message": "Copy the clean URL of the current tab"
+  },
+  "errHashFormat": {
+    "message": "The rules hash file does not contain a valid SHA-256."
+  },
+  "errHashMismatch": {
+    "message": "The downloaded rules do not match their hash. Nothing was changed."
+  },
+  "errRulesFormat": {
+    "message": "The downloaded file is not in the ClearURLs rules format."
+  },
+  "toastCopied": {
+    "message": "Clean link copied"
+  },
+  "toastCopyFailed": {
+    "message": "Could not copy the link"
+  },
+  "menuCopyLink": {
+    "message": "Copy clean link"
+  },
+  "menuOpenLink": {
+    "message": "Open clean link in new tab"
+  },
+  "menuCopyPage": {
+    "message": "Copy clean URL of this page"
+  },
+  "copied": {
+    "message": "Copied"
+  },
+  "save": {
+    "message": "Save"
+  },
+  "saved": {
+    "message": "Saved."
+  },
+  "remove": {
+    "message": "Remove"
+  },
+  "popupToggleTitle": {
+    "message": "Turn protection on or off"
+  },
+  "popupPause": {
+    "message": "Pause on this site"
+  },
+  "popupCopyClean": {
+    "message": "Copy clean URL"
+  },
+  "popupOff": {
+    "message": "Protection is off. Links are not being cleaned."
+  },
+  "popupUnsupported": {
+    "message": "This page can’t be cleaned (internal browser and extension store pages)."
+  },
+  "popupThisTab": {
+    "message": "cleanups in this tab"
+  },
+  "popupTotal": {
+    "message": "cleanups in total"
+  },
+  "popupStillDirty": {
+    "message": "Tracking in the current URL:"
+  },
+  "popupRedirected": {
+    "message": "Redirector skipped: $1 was leading to $2."
+  },
+  "popupRemoved": {
+    "message": "Removed before the page loaded:"
+  },
+  "popupNothing": {
+    "message": "No tracking in this URL."
+  },
+  "popupRules": {
+    "message": "$1 sites with rules"
+  },
+  "kindParams": {
+    "message": "Parameters removed"
+  },
+  "kindRedirect": {
+    "message": "Redirector skipped"
+  },
+  "kindBlock": {
+    "message": "Tracking domain blocked"
+  },
+  "kindLink": {
+    "message": "Link cleaned"
+  },
+  "kindHistory": {
+    "message": "Page URL cleaned"
+  },
+  "kindPing": {
+    "message": "Tracking ping blocked"
+  },
+  "navProtection": {
+    "message": "Protection"
+  },
+  "navRules": {
+    "message": "Rules"
+  },
+  "navPaused": {
+    "message": "Paused sites"
+  },
+  "navActivity": {
+    "message": "Activity"
+  },
+  "navSettings": {
+    "message": "Settings"
+  },
+  "welcomeTitle": {
+    "message": "Done. Your links now come out clean."
+  },
+  "welcomeText": {
+    "message": "LinkLimpo strips from the address whatever only exists to track you, and leaves the rest untouched. It works on its own; there is nothing to set up."
+  },
+  "groupInterface": {
+    "message": "Interface"
+  },
+  "groupAdvanced": {
+    "message": "Advanced"
+  },
+  "opt_cleanLinks": {
+    "message": "Clean links on the page"
+  },
+  "opt_cleanLinks_desc": {
+    "message": "Cleans a link when you hover, click or use “Copy link address”, before you leave the page."
+  },
+  "opt_redirectSkipping": {
+    "message": "Skip redirectors"
+  },
+  "opt_redirectSkipping_desc": {
+    "message": "Goes straight to the destination for links like google.com/url?q=…, l.facebook.com and Outlook Safe Links."
+  },
+  "opt_historyCleaning": {
+    "message": "Clean the page URL"
+  },
+  "opt_historyCleaning_desc": {
+    "message": "Removes tracking that the site adds to the address bar after loading (history API)."
+  },
+  "opt_domainBlocking": {
+    "message": "Block tracking domains"
+  },
+  "opt_domainBlocking_desc": {
+    "message": "Blocks domains that exist only to track or serve ads, such as googlesyndication.com."
+  },
+  "opt_pingBlocking": {
+    "message": "Block link pings"
+  },
+  "opt_pingBlocking_desc": {
+    "message": "Stops a click from notifying a tracking server (ping attribute)."
+  },
+  "opt_allowReferralMarketing": {
+    "message": "Keep affiliate links"
+  },
+  "opt_allowReferralMarketing_desc": {
+    "message": "Keeps referral codes such as Amazon’s tag= so the referrer still gets the commission."
+  },
+  "opt_showBadge": {
+    "message": "Show counter on the icon"
+  },
+  "opt_showBadge_desc": {
+    "message": "Shows how many cleanups were done in the current tab."
+  },
+  "opt_contextMenus": {
+    "message": "Right-click menu items"
+  },
+  "opt_contextMenus_desc": {
+    "message": "Adds “Copy clean link” and “Open clean link in new tab”."
+  },
+  "opt_etagRemoval": {
+    "message": "Remove ETag"
+  },
+  "opt_etagRemoval_desc": {
+    "message": "Prevents tracking through the browser cache. Some pages may load a little slower."
+  },
+  "opt_skipLocalHosts": {
+    "message": "Ignore local network"
+  },
+  "opt_skipLocalHosts_desc": {
+    "message": "Leaves addresses such as localhost and 192.168.x.x alone."
+  },
+  "opt_cleanSubresources": {
+    "message": "Also clean background requests"
+  },
+  "opt_cleanSubresources_desc": {
+    "message": "Applies the rules to scripts, images and API calls, not just pages. May break some sites."
+  },
+  "opt_extraRules": {
+    "message": "Use LinkLimpo extra rules"
+  },
+  "opt_extraRules_desc": {
+    "message": "Adds more parameters and sites to ClearURLs (TikTok, Threads, Temu, Shein, Mercado Livre, Bing, Yahoo…)."
+  },
+  "opt_autoUpdateRules": {
+    "message": "Update rules automatically"
+  },
+  "opt_autoUpdateRules_desc": {
+    "message": "Downloads the official ClearURLs list and checks its SHA-256 hash before using it."
+  },
+  "opt_logEnabled": {
+    "message": "Keep a cleanup log"
+  },
+  "opt_logEnabled_desc": {
+    "message": "Keeps the last 300 cleaned items on this computer only, so you can check what was changed."
+  },
+  "rulesLoading": {
+    "message": "Loading rules…"
+  },
+  "rulesProviders": {
+    "message": "Sites with rules"
+  },
+  "rulesNetwork": {
+    "message": "Active network rules"
+  },
+  "rulesSource": {
+    "message": "Source"
+  },
+  "rulesSourceRemote": {
+    "message": "ClearURLs (downloaded)"
+  },
+  "rulesSourceBundled": {
+    "message": "ClearURLs (bundled)"
+  },
+  "rulesUpdated": {
+    "message": "Downloaded on"
+  },
+  "rulesChecked": {
+    "message": "Last check"
+  },
+  "rulesUpdateNow": {
+    "message": "Update now"
+  },
+  "rulesUseBundled": {
+    "message": "Use the bundled version"
+  },
+  "rulesUpdating": {
+    "message": "Downloading rules…"
+  },
+  "rulesUpdatedNew": {
+    "message": "Rules updated."
+  },
+  "rulesUpToDate": {
+    "message": "Rules are already up to date."
+  },
+  "rulesBundledInUse": {
+    "message": "Using the rules bundled with the extension."
+  },
+  "rulesUpdateError": {
+    "message": "Could not update: $1"
+  },
+  "rulesInterval": {
+    "message": "Check frequency"
+  },
+  "rulesCustom": {
+    "message": "Your rules"
+  },
+  "rulesCustomHelp": {
+    "message": "JSON in the ClearURLs format. Use \"providers\" for new sites, \"extend\" to add parameters to an existing site (e.g. \"globalRules\") and \"disable\" to turn a site off."
+  },
+  "rulesCustomExample": {
+    "message": "Insert example"
+  },
+  "rulesCustomSaved": {
+    "message": "Rules saved: $1 sites."
+  },
+  "rulesCustomInvalid": {
+    "message": "Invalid rules: $1"
+  },
+  "rulesCustomReplaceConfirm": {
+    "message": "This replaces what is in the field. Click again to confirm."
+  },
+  "rulesSources": {
+    "message": "Rule sources"
+  },
+  "rulesUrl": {
+    "message": "Rules file"
+  },
+  "rulesHashUrl": {
+    "message": "Hash file (SHA-256)"
+  },
+  "rulesHttpsOnly": {
+    "message": "Use https:// addresses."
+  },
+  "pausedLead": {
+    "message": "LinkLimpo changes nothing on these sites. Useful when a site stops working without its parameters."
+  },
+  "pausedPlaceholder": {
+    "message": "example.com"
+  },
+  "pausedAdd": {
+    "message": "Pause site"
+  },
+  "pausedEmpty": {
+    "message": "No paused sites. You can also pause a site from the extension icon."
+  },
+  "pausedInvalid": {
+    "message": "Enter a domain, like example.com."
+  },
+  "statTotal": {
+    "message": "Total"
+  },
+  "statParams": {
+    "message": "Parameters"
+  },
+  "statLinks": {
+    "message": "Links"
+  },
+  "statRedirects": {
+    "message": "Redirectors"
+  },
+  "statBlocked": {
+    "message": "Blocks"
+  },
+  "statSince": {
+    "message": "Since $1."
+  },
+  "activityResetStats": {
+    "message": "Reset counters"
+  },
+  "activityClearLog": {
+    "message": "Clear log"
+  },
+  "logDisabled": {
+    "message": "The log is off. Turn it on above to see each cleaned item."
+  },
+  "logEmpty": {
+    "message": "Nothing logged yet."
+  },
+  "aboutVersion": {
+    "message": "Version $1"
+  },
+  "blockedTitle": {
+    "message": "Tracking domain blocked"
+  },
+  "blockedWhy": {
+    "message": "$1 is on the list of tracking domains ($2)."
+  },
+  "blockedBack": {
+    "message": "Go back"
+  },
+  "blockedProceed": {
+    "message": "Open anyway"
+  },
+  "blockedHint": {
+    "message": "“Open anyway” allows this domain until you close the browser."
+  },
+  "statusOn": {
+    "message": "Protection on"
+  },
+  "statusOff": {
+    "message": "Protection off"
+  },
+  "statusPaused": {
+    "message": "Paused on this site"
+  },
+  "groupProtection": {
+    "message": "Protections"
+  },
+  "protectionLead": {
+    "message": "Choose what LinkLimpo does on every page. Changes apply right away."
+  },
+  "heroTitle": {
+    "message": "Anything that only exists to track you leaves the link."
+  },
+  "heroText": {
+    "message": "The address keeps working the same: only tracking parameters are removed, before the page loads."
+  },
+  "heroTitleOff": {
+    "message": "Protection is off."
+  },
+  "heroTextOff": {
+    "message": "Links are opening with tracking. Turn protection on with the switch above."
+  },
+  "rulesLead": {
+    "message": "Rules tell which parameters and domains track you. The base is the ClearURLs list, plus LinkLimpo extra rules and your own."
+  },
+  "rulesUpdateCard": {
+    "message": "Updates"
+  },
+  "everyHours": {
+    "message": "Every $1 hours"
+  },
+  "everyDays": {
+    "message": "Every $1 days"
+  },
+  "logWhen": {
+    "message": "When"
+  },
+  "logKind": {
+    "message": "What happened"
+  },
+  "logRule": {
+    "message": "Rule"
+  },
+  "logUrl": {
+    "message": "Original address"
+  },
+  "activityResetConfirm": {
+    "message": "Click again to reset the counters."
+  },
+  "sideCredit": {
+    "message": "Rules from the ClearURLs project, LGPL-3.0 license."
+  }
+}

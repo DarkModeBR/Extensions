@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LinkLimpo</title>
+    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <img src="../../icons/on-32.png" alt="" width="26" height="26" id="logo" />
+      <div class="title">
+        <h1>LinkLimpo</h1>
+        <p id="status" class="status"></p>
+      </div>
+      <input type="checkbox" class="toggle" id="enabled" data-i18n-aria="popupToggleTitle" data-i18n-title="popupToggleTitle" />
+    </header>
+
+    <main>
+      <section class="site" id="site">
+        <div class="site-row">
+          <p class="host" id="host"></p>
+          <label class="pause">
+            <input type="checkbox" class="check" id="paused" />
+            <span data-i18n="popupPause"></span>
+          </label>
+        </div>
+
+        <div class="anatomy thin-scroll" id="anatomy"></div>
+        <p class="verdict" id="verdict"></p>
+
+        <button class="btn primary lg copy" id="copy">
+          <span data-label data-i18n="popupCopyClean"></span>
+        </button>
+      </section>
+
+      <section class="notice" id="off" hidden>
+        <p data-i18n="popupOff"></p>
+      </section>
+
+      <section class="notice" id="unsupported" hidden>
+        <p data-i18n="popupUnsupported"></p>
+      </section>
+    </main>
+
+    <section class="counts">
+      <div>
+        <strong id="tabCount">0</strong>
+        <span data-i18n="popupThisTab"></span>
+      </div>
+      <div>
+        <strong id="totalCount">0</strong>
+        <span data-i18n="popupTotal"></span>
+      </div>
+    </section>
+
+    <footer class="bottom">
+      <a href="options.html" target="_blank" id="settingsLink">
+        <span data-i18n="navSettings"></span>
+      </a>
+      <span class="rules" id="rules"></span>
+    </footer>
+
+    <script src="common.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

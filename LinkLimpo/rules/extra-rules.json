@@ -1,0 +1,171 @@
+{
+  "name": "LinkLimpo — regras extras",
+  "version": "2026.11.23",
+  "description": "Complemento às regras do ClearURLs: parâmetros de rastreamento novos, mais sites e redirecionadores. Mesmo formato do ClearURLs, com os campos extras 'extend' (acrescenta itens a um provedor existente) e 'disable'.",
+  "extend": {
+    "globalRules": {
+      "rules": [
+        "gbraid",
+        "wbraid",
+        "gad_source",
+        "gad_campaignid",
+        "gclsrc",
+        "ttclid",
+        "li_fat_id",
+        "epik",
+        "s_kwcid",
+        "ef_id",
+        "_kx",
+        "_ke",
+        "rdt_cid",
+        "ScCid",
+        "_bta_tid",
+        "_bta_c",
+        "trk_contact",
+        "trk_msg",
+        "trk_module",
+        "trk_sid",
+        "pk_campaign",
+        "pk_kwd",
+        "pk_keyword",
+        "pk_source",
+        "pk_medium",
+        "pk_content",
+        "pk_cid",
+        "piwik_campaign",
+        "piwik_kwd",
+        "piwik_keyword",
+        "matomo_campaign",
+        "matomo_kwd",
+        "matomo_source",
+        "matomo_medium",
+        "matomo_content",
+        "hsa_(?:acc|cam|grp|ad|src|tgt|kw|mt|net|ver|la|ol)",
+        "_hsmi",
+        "vgo_ee",
+        "ss_email_id",
+        "ss_campaign_id",
+        "ss_campaign_name",
+        "ss_campaign_sent_date",
+        "ss_source",
+        "_branch_match_id",
+        "_branch_referrer",
+        "xtor",
+        "sms_source",
+        "sms_click",
+        "sms_uph",
+        "mibextid",
+        "elqTrackId",
+        "elqTrack",
+        "elqaid",
+        "elqat",
+        "elqCampaignId",
+        "dm_i",
+        "oly_enc_id",
+        "__readwiseLocation"
+      ],
+      "referralMarketing": [
+        "irclickid",
+        "irgwc",
+        "cjevent",
+        "cjdata",
+        "sscid",
+        "awc",
+        "ranMID",
+        "ranEAID",
+        "ranSiteID",
+        "clickref"
+      ]
+    },
+    "google": {
+      "rules": ["sclient"]
+    },
+    "youtube": {
+      "rules": ["embeds_referring_euri", "embeds_referring_origin", "embeds_euri", "source_ve_path"]
+    },
+    "tiktok.com": {
+      "rules": [
+        "is_from_webapp",
+        "sender_device",
+        "is_copy_url",
+        "web_id",
+        "share_link_id",
+        "share_item_id",
+        "share_app_id",
+        "social_sharing",
+        "tt_from",
+        "checksum",
+        "sec_user_id",
+        "enter_from",
+        "enter_method",
+        "refer"
+      ]
+    },
+    "LinkedIn": {
+      "rules": ["midToken", "midSig", "trkEmail"]
+    },
+    "aliexpress": {
+      "rules": ["pdp_npi", "pdp_ext_f", "pdp_perf", "utparam-url", "curPageLogUid", "pvid", "srcSns", "spreadType", "social_params", "tt"],
+      "referralMarketing": ["aff_fcid", "aff_fsk", "aff_platform", "aff_trace_key", "afSmartRedirect"]
+    },
+    "shopee": {
+      "rules": ["uls_trackid", "mmp_pid"]
+    },
+    "mercadolibre": {
+      "rules": ["matt_[a-z_]+", "polycard_client", "sid"]
+    },
+    "amazon": {
+      "rules": ["qsid", "sres"],
+      "referralMarketing": ["linkId"]
+    },
+    "bing": {
+      "redirections": [
+        { "regex": "^https?:\\/\\/(?:www\\.)?bing\\.com\\/ck\\/a\\?.*?[?&]u=a1([A-Za-z0-9_-]+)", "decode": "base64url" }
+      ]
+    },
+    "steampowered": {
+      "rules": ["snr"]
+    }
+  },
+  "providers": {
+    "threads": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?threads\\.(?:net|com)",
+      "rules": ["xmt", "slof"],
+      "redirections": ["^https?:\\/\\/l\\.threads\\.(?:net|com)\\/.*?[?&]u=([^&]+)"]
+    },
+    "yahoo": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?yahoo\\.com",
+      "rules": ["fr", "fr2"],
+      "redirections": ["^https?:\\/\\/r\\.search\\.yahoo\\.com\\/.*?\\/RU=([^/]+)"]
+    },
+    "outlook-safelinks": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?safelinks\\.protection\\.outlook\\.com",
+      "redirections": ["^https?:\\/\\/(?:[a-z0-9-]+\\.)*?safelinks\\.protection\\.outlook\\.com\\/.*?[?&]url=([^&]+)"]
+    },
+    "slack-redir": {
+      "urlPattern": "^https?:\\/\\/slack-redir\\.net",
+      "redirections": ["^https?:\\/\\/slack-redir\\.net\\/link\\?url=([^&]+)"]
+    },
+    "whatsapp-link-shim": {
+      "urlPattern": "^https?:\\/\\/l\\.wl\\.co",
+      "redirections": ["^https?:\\/\\/l\\.wl\\.co\\/l\\?u=([^&]+)"]
+    },
+    "pinterest": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?pinterest(?:\\.[a-z]{2,}){1,}",
+      "rules": ["invite_code", "sender", "sfo"]
+    },
+    "temu": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?temu\\.com",
+      "rules": ["_x_[a-z_]+", "refer_page_[a-z_]+", "_oak_[a-z_]+", "_bg_fs", "_p_rfs", "share_uin"]
+    },
+    "shein": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?shein(?:\\.[a-z]{2,}){1,}",
+      "rules": ["src_identifier", "src_module", "src_tab_page_id", "ici", "scici"]
+    },
+    "substack": {
+      "urlPattern": "^https?:\\/\\/(?:[a-z0-9-]+\\.)*?substack\\.com",
+      "rules": ["triedRedirect", "publication_id", "post_id", "isFreemail"],
+      "referralMarketing": ["r"]
+    }
+  }
+}

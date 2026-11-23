@@ -1,0 +1,410 @@
+{
+  "extName": {
+    "message": "LinkLimpo — links sem rastreamento"
+  },
+  "extDescription": {
+    "message": "Remove parâmetros de rastreamento de links, pula redirecionadores e bloqueia domínios de rastreamento. Usa as regras do ClearURLs."
+  },
+  "cmdCopy": {
+    "message": "Copiar a URL limpa da aba atual"
+  },
+  "errHashFormat": {
+    "message": "O arquivo de hash das regras não tem um SHA-256 válido."
+  },
+  "errHashMismatch": {
+    "message": "O hash das regras baixadas não confere. Nada foi alterado."
+  },
+  "errRulesFormat": {
+    "message": "O arquivo baixado não está no formato de regras do ClearURLs."
+  },
+  "toastCopied": {
+    "message": "Link limpo copiado"
+  },
+  "toastCopyFailed": {
+    "message": "Não foi possível copiar o link"
+  },
+  "menuCopyLink": {
+    "message": "Copiar link limpo"
+  },
+  "menuOpenLink": {
+    "message": "Abrir link limpo em nova aba"
+  },
+  "menuCopyPage": {
+    "message": "Copiar URL limpa desta página"
+  },
+  "copied": {
+    "message": "Copiado"
+  },
+  "save": {
+    "message": "Salvar"
+  },
+  "saved": {
+    "message": "Salvo."
+  },
+  "remove": {
+    "message": "Remover"
+  },
+  "popupToggleTitle": {
+    "message": "Ligar ou desligar a proteção"
+  },
+  "popupPause": {
+    "message": "Pausar neste site"
+  },
+  "popupCopyClean": {
+    "message": "Copiar URL limpa"
+  },
+  "popupOff": {
+    "message": "Proteção desligada. Os links não estão sendo limpos."
+  },
+  "popupUnsupported": {
+    "message": "Esta página não pode ser limpa (páginas internas do navegador e da loja de extensões)."
+  },
+  "popupThisTab": {
+    "message": "limpezas nesta aba"
+  },
+  "popupTotal": {
+    "message": "limpezas no total"
+  },
+  "popupStillDirty": {
+    "message": "Rastreamento na URL atual:"
+  },
+  "popupRedirected": {
+    "message": "Redirecionador pulado: $1 levava a $2."
+  },
+  "popupRemoved": {
+    "message": "Removido antes de a página carregar:"
+  },
+  "popupNothing": {
+    "message": "Nenhum rastreamento nesta URL."
+  },
+  "popupRules": {
+    "message": "$1 sites com regras"
+  },
+  "kindParams": {
+    "message": "Parâmetros removidos"
+  },
+  "kindRedirect": {
+    "message": "Redirecionador pulado"
+  },
+  "kindBlock": {
+    "message": "Domínio de rastreamento bloqueado"
+  },
+  "kindLink": {
+    "message": "Link limpo"
+  },
+  "kindHistory": {
+    "message": "URL da página limpa"
+  },
+  "kindPing": {
+    "message": "Ping de rastreamento bloqueado"
+  },
+  "navProtection": {
+    "message": "Proteção"
+  },
+  "navRules": {
+    "message": "Regras"
+  },
+  "navPaused": {
+    "message": "Sites pausados"
+  },
+  "navActivity": {
+    "message": "Atividade"
+  },
+  "navSettings": {
+    "message": "Configurações"
+  },
+  "welcomeTitle": {
+    "message": "Pronto. Seus links já saem limpos."
+  },
+  "welcomeText": {
+    "message": "O LinkLimpo tira do endereço o que só serve para rastrear você e deixa o resto como está. Funciona sozinho: não precisa configurar nada."
+  },
+  "groupInterface": {
+    "message": "Interface"
+  },
+  "groupAdvanced": {
+    "message": "Avançado"
+  },
+  "opt_cleanLinks": {
+    "message": "Limpar links na página"
+  },
+  "opt_cleanLinks_desc": {
+    "message": "Limpa o link quando você passa o mouse, clica ou usa “Copiar endereço do link”, antes de sair da página."
+  },
+  "opt_redirectSkipping": {
+    "message": "Pular redirecionadores"
+  },
+  "opt_redirectSkipping_desc": {
+    "message": "Vai direto ao destino em links como google.com/url?q=…, l.facebook.com e Outlook Safe Links."
+  },
+  "opt_historyCleaning": {
+    "message": "Limpar a URL da página"
+  },
+  "opt_historyCleaning_desc": {
+    "message": "Tira rastreamento que o site coloca na barra de endereço depois de carregar (history API)."
+  },
+  "opt_domainBlocking": {
+    "message": "Bloquear domínios de rastreamento"
+  },
+  "opt_domainBlocking_desc": {
+    "message": "Bloqueia domínios que só existem para rastrear ou servir anúncios, como googlesyndication.com."
+  },
+  "opt_pingBlocking": {
+    "message": "Bloquear pings de links"
+  },
+  "opt_pingBlocking_desc": {
+    "message": "Impede que um clique avise um servidor de rastreamento (atributo ping)."
+  },
+  "opt_allowReferralMarketing": {
+    "message": "Manter links de afiliados"
+  },
+  "opt_allowReferralMarketing_desc": {
+    "message": "Mantém códigos de indicação, como o tag= da Amazon, para que quem indicou receba a comissão."
+  },
+  "opt_showBadge": {
+    "message": "Mostrar contador no ícone"
+  },
+  "opt_showBadge_desc": {
+    "message": "Mostra quantas limpezas foram feitas na aba atual."
+  },
+  "opt_contextMenus": {
+    "message": "Itens no menu do botão direito"
+  },
+  "opt_contextMenus_desc": {
+    "message": "Adiciona “Copiar link limpo” e “Abrir link limpo em nova aba”."
+  },
+  "opt_etagRemoval": {
+    "message": "Remover ETag"
+  },
+  "opt_etagRemoval_desc": {
+    "message": "Evita rastreamento pelo cache do navegador. Algumas páginas podem carregar um pouco mais devagar."
+  },
+  "opt_skipLocalHosts": {
+    "message": "Ignorar rede local"
+  },
+  "opt_skipLocalHosts_desc": {
+    "message": "Não mexe em endereços como localhost e 192.168.x.x."
+  },
+  "opt_cleanSubresources": {
+    "message": "Limpar também requisições internas"
+  },
+  "opt_cleanSubresources_desc": {
+    "message": "Aplica as regras a scripts, imagens e chamadas de API, além das páginas. Pode quebrar alguns sites."
+  },
+  "opt_extraRules": {
+    "message": "Usar as regras extras do LinkLimpo"
+  },
+  "opt_extraRules_desc": {
+    "message": "Complementa o ClearURLs com mais parâmetros e sites (TikTok, Threads, Temu, Shein, Mercado Livre, Bing, Yahoo…)."
+  },
+  "opt_autoUpdateRules": {
+    "message": "Atualizar regras automaticamente"
+  },
+  "opt_autoUpdateRules_desc": {
+    "message": "Baixa a lista oficial do ClearURLs e confere o hash SHA-256 antes de usar."
+  },
+  "opt_logEnabled": {
+    "message": "Guardar registro de limpezas"
+  },
+  "opt_logEnabled_desc": {
+    "message": "Guarda os últimos 300 itens limpos só neste computador, para você conferir o que foi alterado."
+  },
+  "rulesLoading": {
+    "message": "Carregando regras…"
+  },
+  "rulesProviders": {
+    "message": "Sites com regras"
+  },
+  "rulesNetwork": {
+    "message": "Regras de rede ativas"
+  },
+  "rulesSource": {
+    "message": "Origem"
+  },
+  "rulesSourceRemote": {
+    "message": "ClearURLs (baixada)"
+  },
+  "rulesSourceBundled": {
+    "message": "ClearURLs (embutida)"
+  },
+  "rulesUpdated": {
+    "message": "Baixada em"
+  },
+  "rulesChecked": {
+    "message": "Última verificação"
+  },
+  "rulesUpdateNow": {
+    "message": "Atualizar agora"
+  },
+  "rulesUseBundled": {
+    "message": "Usar a versão embutida"
+  },
+  "rulesUpdating": {
+    "message": "Baixando regras…"
+  },
+  "rulesUpdatedNew": {
+    "message": "Regras atualizadas."
+  },
+  "rulesUpToDate": {
+    "message": "As regras já estão na versão mais recente."
+  },
+  "rulesBundledInUse": {
+    "message": "Usando as regras embutidas na extensão."
+  },
+  "rulesUpdateError": {
+    "message": "Não foi possível atualizar: $1"
+  },
+  "rulesInterval": {
+    "message": "Frequência da verificação"
+  },
+  "rulesCustom": {
+    "message": "Suas regras"
+  },
+  "rulesCustomHelp": {
+    "message": "JSON no formato do ClearURLs. Use \"providers\" para sites novos, \"extend\" para acrescentar parâmetros a um site existente (ex.: \"globalRules\") e \"disable\" para desligar um site."
+  },
+  "rulesCustomExample": {
+    "message": "Inserir exemplo"
+  },
+  "rulesCustomSaved": {
+    "message": "Regras salvas: $1 sites."
+  },
+  "rulesCustomInvalid": {
+    "message": "Regras inválidas: $1"
+  },
+  "rulesCustomReplaceConfirm": {
+    "message": "Isso substitui o que está no campo. Clique de novo para confirmar."
+  },
+  "rulesSources": {
+    "message": "Endereços das regras"
+  },
+  "rulesUrl": {
+    "message": "Arquivo de regras"
+  },
+  "rulesHashUrl": {
+    "message": "Arquivo de hash (SHA-256)"
+  },
+  "rulesHttpsOnly": {
+    "message": "Use endereços https://."
+  },
+  "pausedLead": {
+    "message": "Nesses sites o LinkLimpo não altera nada. Útil quando um site para de funcionar sem os parâmetros."
+  },
+  "pausedPlaceholder": {
+    "message": "exemplo.com.br"
+  },
+  "pausedAdd": {
+    "message": "Pausar site"
+  },
+  "pausedEmpty": {
+    "message": "Nenhum site pausado. Você também pode pausar pelo ícone da extensão."
+  },
+  "pausedInvalid": {
+    "message": "Digite um domínio, como exemplo.com.br."
+  },
+  "statTotal": {
+    "message": "Total"
+  },
+  "statParams": {
+    "message": "Parâmetros"
+  },
+  "statLinks": {
+    "message": "Links"
+  },
+  "statRedirects": {
+    "message": "Redirecionadores"
+  },
+  "statBlocked": {
+    "message": "Bloqueios"
+  },
+  "statSince": {
+    "message": "Desde $1."
+  },
+  "activityResetStats": {
+    "message": "Zerar contadores"
+  },
+  "activityClearLog": {
+    "message": "Apagar registro"
+  },
+  "logDisabled": {
+    "message": "O registro está desligado. Ligue acima para ver cada item limpo."
+  },
+  "logEmpty": {
+    "message": "Nada registrado ainda."
+  },
+  "aboutVersion": {
+    "message": "Versão $1"
+  },
+  "blockedTitle": {
+    "message": "Domínio de rastreamento bloqueado"
+  },
+  "blockedWhy": {
+    "message": "$1 está na lista de domínios de rastreamento ($2)."
+  },
+  "blockedBack": {
+    "message": "Voltar"
+  },
+  "blockedProceed": {
+    "message": "Abrir mesmo assim"
+  },
+  "blockedHint": {
+    "message": "“Abrir mesmo assim” libera este domínio até você fechar o navegador."
+  },
+  "statusOn": {
+    "message": "Proteção ligada"
+  },
+  "statusOff": {
+    "message": "Proteção desligada"
+  },
+  "statusPaused": {
+    "message": "Pausado neste site"
+  },
+  "groupProtection": {
+    "message": "Proteções"
+  },
+  "protectionLead": {
+    "message": "Escolha o que o LinkLimpo faz em cada página. As mudanças valem na hora."
+  },
+  "heroTitle": {
+    "message": "Tudo o que só serve para rastrear sai do link."
+  },
+  "heroText": {
+    "message": "O endereço continua funcionando igual: só os parâmetros de rastreamento são removidos, antes de a página carregar."
+  },
+  "heroTitleOff": {
+    "message": "A proteção está desligada."
+  },
+  "heroTextOff": {
+    "message": "Os links estão abrindo com rastreamento. Ligue a proteção no interruptor acima."
+  },
+  "rulesLead": {
+    "message": "As regras dizem quais parâmetros e domínios rastreiam você. A base é a lista do ClearURLs, somada às regras extras do LinkLimpo e às suas."
+  },
+  "rulesUpdateCard": {
+    "message": "Atualização"
+  },
+  "everyHours": {
+    "message": "A cada $1 horas"
+  },
+  "everyDays": {
+    "message": "A cada $1 dias"
+  },
+  "logWhen": {
+    "message": "Quando"
+  },
+  "logKind": {
+    "message": "O que aconteceu"
+  },
+  "logRule": {
+    "message": "Regra"
+  },
+  "logUrl": {
+    "message": "Endereço original"
+  },
+  "activityResetConfirm": {
+    "message": "Clique de novo para zerar os contadores."
+  },
+  "sideCredit": {
+    "message": "Regras do projeto ClearURLs, licença LGPL-3.0."
+  }
+}
